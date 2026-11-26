@@ -1,0 +1,25 @@
+
+IEEE 754 decoder project tests
+==============================
+  PASS  1.0 encodes as 0 01111111111 000...
+  PASS  encode/decode round trip (210 values)
+  PASS  manual decoding = hardware (300 random patterns)
+  PASS  the machine number from the notes
+  PASS  it is the successor of 27.56640625
+  PASS  zero / subnormal / inf / NaN / normal
+  PASS  negative zero
+  PASS  neighbours are adjacent doubles
+  PASS  machine epsilon = 2^-52
+  PASS  0.1 + 0.2 is exactly one ulp above 0.3
+  PASS  2^53 + 1 rounds back to 2^53
+  PASS  spaces in the bit string are ignored
+  PASS  error id: wrong length
+  PASS  error id: non-binary character
+  PASS  error id: non-finite neighbour input
+  PASS  built-in tests of bits_to_double.m (4/4)
+  PASS  built-in tests of encode_ieee754_double.m (4/4)
+  PASS  built-in tests of decode_ieee754_double.m (4/4)
+  PASS  built-in tests of neighbor_doubles.m (3/3)
+
+19 passed, 0 failed
+

@@ -1,0 +1,11 @@
+# GitHub's language detector cannot tell Octave, MATLAB and Objective-C apart
+# (all use the .m extension). Pin them so the repository shows up as MATLAB/Octave code.
+*.m linguist-language=MATLAB
+
+# Keep line endings stable across Windows/macOS/Linux checkouts
+*.m   text eol=lf
+*.sh  text eol=lf
+*.md  text eol=lf
+*.png binary
+*.pdf binary
+*.rtf -text

@@ -1,0 +1,16 @@
+# GNU Octave / MATLAB
+octave-workspace
+octave-core
+*.asv
+*.autosave
+*.m~
+*.mex*
+fig*.fig
+
+# Editors and operating systems
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.vscode/
+.idea/

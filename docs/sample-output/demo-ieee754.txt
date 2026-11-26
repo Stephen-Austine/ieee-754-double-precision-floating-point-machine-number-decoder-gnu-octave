@@ -1,0 +1,77 @@
+
+=== 1. The machine number from the original notes ===
+
+fraction field has 52 bits
+
+Bit pattern  : 0 10000000011 1011100100010000000000000000000000000000000000000001
+               S  E (11 bits)   F (52 bits)
+
+Sign         : S = 0   ->  (-1)^0 = +1
+Exponent     : E = 10000000011 (binary) = 1027
+               unbiased exponent e = E - 1023 = 4
+Fraction     : F = 0.72290039062500022
+Significand  : 1 + F = 1.7229003906250002
+Value        : +1 x 2^4 x 1.7229003906250002
+Class        : normal
+Value        : 27.566406250000004
+Hardware says: 27.566406250000004   (agrees)
+
+Neighbours   : 27.56640625   (gap 3.553e-15)
+               27.566406250000007   (gap 3.553e-15)
+
+=== 2. Correction to the original worked solution ===
+
+fraction value stated in the notes    : 0.72235107421875
+fraction value computed here          : 0.72290039062500022
+difference                            : 5.493e-04
+correct value of the number           : 27.566406250000004
+value the notes' fraction would give  : 2^4 * 1.72235107421875 = 27.5576171875  (wrong)
+
+=== 3. The classic textbook neighbour: trailing bit set to 0 ===
+
+with F = .1011100100010 followed by zeros : 27.56640625
+the number above is its immediate successor: 27.566406250000004
+gap between them (one unit in the last place): 3.5527e-15 = 2^-48
+
+=== 4. Encode then decode a few familiar numbers ===
+
+1            0 01111111111 0000000000000000000000000000000000000000000000000000 -> 1
+-2           1 10000000000 0000000000000000000000000000000000000000000000000000 -> -2
+0.5          0 01111111110 0000000000000000000000000000000000000000000000000000 -> 0.5
+0.1          0 01111111011 1001100110011001100110011001100110011001100110011010 -> 0.10000000000000001
+3.14159      0 10000000000 1001001000011111101101010100010001000010110100011000 -> 3.1415926535897931
+1e+300       0 11111100011 0111111001000011110010001000000000000111010110011100 -> 1.0000000000000001e+300
+
+=== 5. Special values ===
+
+0                        zero       E=   0
+-0                       zero       E=   0
+Inf                      infinity   E=2047
+-Inf                     infinity   E=2047
+NaN                      NaN        E=2047
+2.2250738585072014e-308  normal     E=   1
+2.1729236899484389e-311  subnormal  E=   0
+4.9406564584124654e-324  subnormal  E=   0
+1.7976931348623157e+308  normal     E=2046
+
+=== 6. Why 0.1 + 0.2 != 0.3 ===
+
+0.1       = 0.10000000000000000555
+0.2       = 0.20000000000000001110
+0.1 + 0.2 = 0.30000000000000004441
+0.3       = 0.29999999999999998890
+(0.1 + 0.2) == 0.3 : 0,   difference = 5.551e-17 = 1 ulp
+
+=== 7. Spacing of doubles ===
+
+           x   spacing eps(x)        spacing / x
+       1e-10       1.2925e-26         1.2925e-16
+       1e+00       2.2204e-16         2.2204e-16
+       1e+03       1.1369e-13         1.1369e-16
+       1e+10       1.9073e-06         1.9073e-16
+       1e+16       2.0000e+00         2.0000e-16
+      1e+100       1.9427e+84         1.9427e-16
+
+2^53     = 9007199254740992
+2^53 + 1 = 9007199254740992   (not representable: rounds back)
+
