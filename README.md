@@ -875,4 +875,4 @@ Issues and pull requests are welcome. Before opening a pull request:
 
 ## 23. License
 
-Released under the [MIT License](LICENSE). The `LICENSE` file currently names `[YOUR NAME]` as the copyright holder — replace it with your own name (and year, if you prefer) before you publish the repository.
+Released under the [MIT License](LICENSE).
